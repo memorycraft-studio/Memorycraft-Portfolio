@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friendship Book 📖 | MemoryCraft Studio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#cde7f0;
+    color:#1f2f3f;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* =========================
+   FLOATING NOTES
+========================= */
+
+.notes-container{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+}
+
+.note{
+    position:absolute;
+    font-size:26px;
+    opacity:.4;
+    animation:floatNote linear infinite;
+}
+
+@keyframes floatNote{
+
+    0%{
+        transform:translateY(110vh) rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:.4;
+    }
+
+    50%{
+        transform:translateY(50vh) translateX(30px) rotate(15deg);
+    }
+
+    100%{
+        transform:translateY(-120vh) translateX(-30px) rotate(-15deg);
+        opacity:0;
+    }
+}
+
+.note:nth-child(1){left:5%; animation-duration:18s;}
+.note:nth-child(2){left:15%; animation-duration:22s;}
+.note:nth-child(3){left:25%; animation-duration:16s;}
+.note:nth-child(4){left:35%; animation-duration:20s;}
+.note:nth-child(5){left:50%; animation-duration:17s;}
+.note:nth-child(6){left:60%; animation-duration:24s;}
+.note:nth-child(7){left:72%; animation-duration:19s;}
+.note:nth-child(8){left:82%; animation-duration:21s;}
+.note:nth-child(9){left:92%; animation-duration:18s;}
+
+/* ========================= */
+
+.content{
+    position:relative;
+    z-index:2;
+}
+
+section{
+    padding:100px 10%;
+}
+
+/* =========================
+   GLASS CARD
+========================= */
+
+.glass{
+    background:rgba(255,255,255,.25);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:28px;
+    transition:.35s;
+}
+
+.glass:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 35px rgba(255,255,255,.9);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.hero-card{
+    max-width:900px;
+    text-align:center;
+    padding:45px;
+}
+
+.hero-card h1{
+    font-size:3.5rem;
+    margin-bottom:20px;
+}
+
+.hero-card p{
+    line-height:1.9;
+    color:#3b4b5a;
+}
+
+.hero-img{
+    width:350px;
+    max-width:90%;
+    border-radius:25px;
+    margin:35px 0;
+}
+
+/* =========================
+   THINGS I LIKE
+========================= */
+
+.section-title{
+    text-align:center;
+    font-size:2.7rem;
+    margin-bottom:50px;
+}
+
+.likes-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.like-card{
+    padding:30px;
+    text-align:center;
+}
+
+.like-card h3{
+    margin-bottom:15px;
+}
+
+/* =========================
+   TYPEWRITER
+========================= */
+
+.quote-card{
+    max-width:900px;
+    margin:auto;
+    padding:45px;
+    text-align:center;
+}
+
+.quote-card h2{
+    margin-bottom:25px;
+}
+
+#typewriter{
+    font-size:1.2rem;
+    line-height:2;
+    min-height:100px;
+    color:#334455;
+}
+
+/* =========================
+   MEMORIES
+========================= */
+
+.memories-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.memories-grid img{
+    width:100%;
+    border-radius:25px;
+    transition:.4s;
+}
+
+.memories-grid img:hover{
+    transform:scale(1.04);
+    box-shadow:0 0 35px rgba(255,255,255,.9);
+}
+
+/* =========================
+   ENDING
+========================= */
+
+.end{
+    min-height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.end-card{
+    max-width:900px;
+    text-align:center;
+    padding:45px;
+}
+
+.end-card h2{
+    font-size:2.8rem;
+    margin-bottom:20px;
+}
+
+.end-card p{
+    line-height:2;
+}
+
+.brand{
+    margin-top:35px;
+    font-size:.95rem;
+    color:#456;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.hero-card h1{
+    font-size:2.6rem;
+}
+
+.section-title{
+    font-size:2rem;
+}
+
+.end-card h2{
+    font-size:2rem;
+}
+
+section{
+    padding:80px 7%;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- FLOATING NOTES -->
+
+<div class="notes-container">
+
+    <div class="note">📝</div>
+    <div class="note">📝</div>
+    <div class="note">⭐</div>
+    <div class="note">📝</div>
+    <div class="note">⭐</div>
+    <div class="note">📝</div>
+    <div class="note">⭐</div>
+    <div class="note">📝</div>
+    <div class="note">⭐</div>
+
+</div>
+
+<div class="content">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-card glass">
+
+            <h1>Friendship Book 📖</h1>
+
+            <p>
+                Some people come into our lives
+                and become a chapter we never want to end.
+            </p>
+
+            <img src="images/friendship.jpg" class="hero-img">
+
+            <p>
+                A collection of memories, laughter,
+                adventures and unforgettable moments.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- THINGS I LIKE -->
+
+    <section>
+
+        <h2 class="section-title">
+            Things I Like About My Friend 💙
+        </h2>
+
+        <div class="likes-grid">
+
+            <div class="like-card glass">
+                <h3>😂 Always Makes Me Laugh</h3>
+                <p>Every moment becomes fun when you're around.</p>
+            </div>
+
+            <div class="like-card glass">
+                <h3>🤝 Always There</h3>
+                <p>Through good days and bad days alike.</p>
+            </div>
+
+            <div class="like-card glass">
+                <h3>✨ Creates Memories</h3>
+                <p>Turns ordinary moments into unforgettable stories.</p>
+            </div>
+
+            <div class="like-card glass">
+                <h3>💙 Truly Special</h3>
+                <p>A friend I'll always treasure and appreciate.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- QUOTE -->
+
+    <section>
+
+        <div class="quote-card glass">
+
+            <h2>Friendship Quote ✨</h2>
+
+            <p id="typewriter"></p>
+
+        </div>
+
+    </section>
+
+    <!-- MEMORIES -->
+
+    <section>
+
+        <h2 class="section-title">
+            Our Favorite Memories 📸
+        </h2>
+
+        <div class="memories-grid">
+
+            <img src="images/gallery1.jpg">
+            <img src="images/gallery2.jpg">
+            <img src="images/gallery3.jpg">
+            <img src="images/gallery4.jpg">
+
+        </div>
+
+    </section>
+
+    <!-- ENDING -->
+
+    <section class="end">
+
+        <div class="end-card glass">
+
+            <h2>
+                No matter where life takes us,
+                these memories will always stay with us. 💙
+            </h2>
+
+            <p>
+                Thank you for being part of my story.
+                Some friendships never fade, no matter how much time passes.
+            </p>
+
+            <div class="brand">
+                Made with ❤️ by MemoryCraft Studio
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script>
+
+const text =
+"Good friends are like stars. You don't always see them, but you know they're always there.";
+
+let i = 0;
+
+function typeWriter(){
+
+    if(i < text.length){
+
+        document.getElementById("typewriter").innerHTML += text.charAt(i);
+
+        i++;
+
+        setTimeout(typeWriter, 45);
+    }
+
+}
+
+window.onload = typeWriter;
+
+</script>
+
+</body>
+</html>

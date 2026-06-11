@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Demo 🎂 | MemoryCraft Studio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#dbd5eb;
+    color:white;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* =========================
+   FLOATING BALLOONS V2
+========================= */
+
+.balloon-container{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+}
+
+.balloon{
+    position:absolute;
+    bottom:-200px;
+    border-radius:50%;
+    opacity:.85;
+    animation:floatUp linear infinite;
+}
+
+.balloon::before{
+    content:"";
+    position:absolute;
+    width:2px;
+    height:80px;
+    background:rgba(255,255,255,.5);
+    left:50%;
+    transform:translateX(-50%);
+    top:100%;
+}
+
+.balloon::after{
+    content:"";
+    position:absolute;
+    width:12px;
+    height:12px;
+    background:inherit;
+    left:50%;
+    bottom:-5px;
+    transform:translateX(-50%) rotate(45deg);
+}
+
+@keyframes floatUp{
+
+    0%{
+        transform:translateY(0) translateX(0);
+        opacity:0;
+    }
+
+    10%{
+        opacity:.85;
+    }
+
+    25%{
+        transform:translateY(-25vh) translateX(20px);
+    }
+
+    50%{
+        transform:translateY(-50vh) translateX(-25px);
+    }
+
+    75%{
+        transform:translateY(-75vh) translateX(20px);
+    }
+
+    100%{
+        transform:translateY(-120vh) translateX(-20px);
+        opacity:0;
+    }
+
+}
+
+/* Balloon 1 */
+
+.balloon:nth-child(1){
+    width:60px;
+    height:75px;
+    background:#ff5fa2;
+    left:5%;
+    animation-duration:8s;
+    animation-delay:0s;
+}
+
+/* Balloon 2 */
+
+.balloon:nth-child(2){
+    width:55px;
+    height:70px;
+    background:#ffb703;
+    left:15%;
+    animation-duration:10s;
+    animation-delay:1s;
+}
+
+/* Balloon 3 */
+
+.balloon:nth-child(3){
+    width:65px;
+    height:80px;
+    background:#3aace2;
+    left:25%;
+    animation-duration:9s;
+    animation-delay:2s;
+}
+
+/* Balloon 4 */
+
+.balloon:nth-child(4){
+    width:55px;
+    height:70px;
+    background:#e02929;
+    left:35%;
+    animation-duration:11s;
+    animation-delay:3s;
+}
+
+/* Balloon 5 */
+
+.balloon:nth-child(5){
+    width:60px;
+    height:75px;
+    background:#55ad43;
+    left:50%;
+    animation-duration:8s;
+    animation-delay:4s;
+}
+
+/* Balloon 6 */
+
+.balloon:nth-child(6){
+    width:70px;
+    height:85px;
+    background:#ec4cec;
+    left:60%;
+    animation-duration:12s;
+    animation-delay:5s;
+}
+
+/* Balloon 7 */
+
+.balloon:nth-child(7){
+    width:55px;
+    height:70px;
+    background:#ed911f;
+    left:72%;
+    animation-duration:9s;
+    animation-delay:6s;
+}
+
+/* Balloon 8 */
+
+.balloon:nth-child(8){
+    width:65px;
+    height:80px;
+    background:#124c7e;
+    left:82%;
+    animation-duration:10s;
+    animation-delay:7s;
+}
+
+/* Balloon 9 */
+
+.balloon:nth-child(9){
+    width:60px;
+    height:75px;
+    background:#df6f6f;
+    left:92%;
+    animation-duration:9s;
+    animation-delay:8s;
+}
+
+/* ========================= */
+
+.content{
+    position:relative;
+    z-index:2;
+}
+
+section{
+    padding:100px 10%;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:4.5rem;
+    margin-bottom:20px;
+    colour:#7600bc;
+}
+
+.hero p{
+    max-width:750px;
+    line-height:1.8;
+    color:#7600bc;
+}
+
+.hero-img{
+    width:380px;
+    max-width:90%;
+    margin:40px 0;
+    border-radius:30px;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+/* GLASS CARD */
+
+.glass{
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:30px;
+}
+
+/* WISH */
+
+.wish{
+    display:flex;
+    justify-content:center;
+}
+
+.wish-card{
+    max-width:900px;
+    padding:45px;
+    text-align:center;
+}
+
+.wish-card h2{
+    margin-bottom:25px;
+    font-size:2.5rem;
+    colour:#7600bc;
+}
+
+.wish-card p{
+    line-height:2;
+    color:#7600bc;
+}
+
+/* GALLERY */
+
+.gallery-title{
+    text-align:center;
+    font-size:2.8rem;
+    margin-bottom:50px;
+    colour:#7600bc;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:25px;
+    transition:.4s;
+    cursor:pointer;
+}
+
+.gallery img:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+/* ENDING */
+
+.end{
+    min-height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.end h2{
+    font-size:3rem;
+    margin-bottom:20px;
+    colour:#7600bc;
+}
+
+.end p{
+    color:#7600bc;
+}
+
+.brand{
+    margin-top:40px;
+    font-size:.95rem;
+    opacity:.9;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:3rem;
+}
+
+.end h2{
+    font-size:2rem;
+}
+
+section{
+    padding:80px 7%;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- FLOATING BALLOONS -->
+
+<div class="balloon-container">
+
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    
+
+</div>
+
+<div class="content">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>Happy Birthday 🎂</h1>
+
+        <p>
+            Today is all about celebrating you,
+            your smile, your happiness and all the
+            beautiful memories you bring into our lives. 💜
+        </p>
+
+        <img src="images/birthday-hero.jpg" class="hero-img">
+
+        <p>
+            Wishing you endless happiness,
+            unforgettable moments and a year filled
+            with love, laughter and success. ✨
+        </p>
+
+    </section>
+
+    <!-- WISH -->
+
+    <section class="wish">
+
+        <div class="wish-card glass">
+
+            <h2>A Special Birthday Wish 🎉</h2>
+
+            <p>
+                Another year older,
+                another year more wonderful.
+                <br><br>
+                May your day be filled with love,
+                laughter, happiness and countless blessings.
+                <br><br>
+                Keep smiling, keep shining,
+                and keep making beautiful memories.
+                🎂💜✨
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- GALLERY -->
+
+    <section>
+
+        <h2 class="gallery-title">Beautiful Memories 📸</h2>
+
+        <div class="gallery">
+
+            <img src="images/gallery1.jpg">
+            <img src="images/gallery2.jpg">
+            <img src="images/gallery3.jpg">
+            <img src="images/gallery4.jpg">
+
+        </div>
+
+    </section>
+
+    <!-- END -->
+
+    <section class="end">
+
+        <div>
+
+            <h2>
+                May all your dreams come true. 🎉💜
+            </h2>
+
+            <p>
+                Here's to another year of wonderful memories,
+                exciting adventures and endless happiness.
+            </p>
+
+            <div class="brand">
+                Made with ❤️ by MemoryCraft Studio
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+</html>

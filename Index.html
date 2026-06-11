@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MemoryCraft Studio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Background Glow */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:#00ffff25;
+    border-radius:50%;
+    filter:blur(150px);
+    top:-150px;
+    left:-150px;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#00e5ff20;
+    border-radius:50%;
+    filter:blur(150px);
+    bottom:-150px;
+    right:-150px;
+    z-index:-2;
+}
+
+section{
+    width:100%;
+    padding:100px 10%;
+}
+
+h2{
+    text-align:center;
+    font-size:2.8rem;
+    margin-bottom:50px;
+    color:#00e5ff;
+}
+
+/* Hero */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.logo{
+    width:200px;
+    height:200px;
+}
+
+.logo img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+.hero h1{
+    font-size:5rem;
+    font-weight:800;
+    color:white;
+    text-shadow:0 0 25px #00ffff;
+}
+
+.hero h3{
+    color:#00e5ff;
+    font-weight:500;
+    margin-top:10px;
+}
+
+.hero p{
+    max-width:700px;
+    margin-top:25px;
+    color:#bdbdbd;
+    line-height:1.8;
+}
+
+/* Glass Cards */
+
+.glass{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:25px;
+}
+
+/* About */
+
+.about{
+    text-align:center;
+}
+
+.about p{
+    max-width:900px;
+    margin:auto;
+    color:#cfcfcf;
+    line-height:2;
+}
+.hero-card{
+    margin-top:25px;
+    max-width:750px;
+    padding:30px;
+}
+
+.hero-card h3{
+    color:#00e5ff;
+    margin-bottom:15px;
+}
+
+.hero-card p{
+    color:#cfcfcf;
+    line-height:1.8;
+}
+
+.about-card{
+    max-width:900px;
+    margin:auto;
+    padding:35px;
+}
+
+.about-card p{
+    color:#cfcfcf;
+    line-height:2;
+}
+
+/* Offer + Demo */
+
+.split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.offer-box,
+.demo-box{
+    padding:35px;
+}
+
+.offer-box h3,
+.demo-box h3{
+    margin-bottom:25px;
+    color:#00e5ff;
+}
+
+.offer-list{
+    display:grid;
+    gap:15px;
+}
+
+.offer-item{
+    padding:15px;
+    border-radius:15px;
+    background:rgba(255,255,255,0.03);
+}
+
+.demo-card{
+    padding:20px;
+    margin-bottom:15px;
+    border-radius:15px;
+    background:rgba(255,255,255,0.03);
+    transition:0.3s ease;
+    cursor:pointer;
+}
+
+.demo-card:hover{
+    transform:translateY(-8px) scale(1.02);
+    border:1px solid rgba(0,229,255,0.4);
+    box-shadow:0 0 25px rgba(0,229,255,0.25);
+    background:rgba(255,255,255,0.06);
+}
+
+.demo-card button{
+    margin-top:10px;
+    padding:10px 20px;
+    border:none;
+    border-radius:30px;
+    background:#00e5ff;
+    color:black;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.demo-card button:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px rgba(0,229,255,0.6);
+}
+
+/* Why Choose */
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.why-card{
+    padding:30px;
+    text-align:center;
+}
+
+.why-card:hover{
+    transform:translateY(-8px);
+    transition:.3s;
+}
+
+.why-card h4{
+    color:#00e5ff;
+    margin-bottom:10px;
+}
+
+/* Pricing */
+
+.price-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.price-card{
+    padding:40px;
+    text-align:center;
+}
+
+.price-card h3{
+    color:#00e5ff;
+}
+
+.price{
+    font-size:3rem;
+    font-weight:700;
+    margin:20px 0;
+}
+
+.price-card ul{
+    list-style:none;
+}
+
+.price-card li{
+    margin:12px 0;
+    color:#cfcfcf;
+}
+
+/* Contact */
+
+.contact{
+    text-align:center;
+}
+
+.contact-links{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.contact-links a{
+    text-decoration:none;
+    color:black;
+    background:#00e5ff;
+    padding:12px 25px;
+    border-radius:30px;
+    font-weight:600;
+    transition:0.3s ease;
+    border:1px solid transparent;
+}
+
+.contact-links a:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 0 20px rgba(0,229,255,0.7);
+    border:1px solid rgba(255,255,255,0.3);
+}
+.contact-card{
+    max-width:700px;
+    margin:auto;
+    padding:40px;
+    border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 0 25px rgba(0,229,255,0.15);
+}
+/* Footer */
+
+footer{
+    text-align:center;
+    padding:40px;
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+footer h3{
+    color:#00e5ff;
+    margin-bottom:10px;
+}
+
+footer p{
+    color:#9d9d9d;
+}
+
+@media(max-width:900px){
+
+.hero h1{
+    font-size:3rem;
+}
+
+.split{
+    grid-template-columns:1fr;
+}
+
+section{
+    padding:80px 7%;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+    <div class="logo">
+    <img src="logo.png" alt="MemoryCraft Studio Logo">
+</div>
+
+    <h1>MemoryCraft</h1>
+
+    <div class="hero-card glass">
+
+    <h3>Crafting Memories Into Websites</h3>
+
+    <p>
+        We transform your special moments into beautiful,
+        interactive websites that preserve memories forever.
+    </p>
+
+</div>
+
+</section>
+
+<section class="about">
+
+    <h2>About Us</h2>
+
+    <div class="about-card glass">
+
+    <p>
+        At MemoryCraft Studio, we create personalized websites that
+        capture emotions, memories and stories. Whether it's a birthday
+        surprise, anniversary gift, friendship book or couple journey,
+        we transform memories into immersive digital experiences.
+    </p>
+
+</div>
+
+</section>
+
+<section>
+
+    <div class="split">
+
+        <div class="offer-box glass">
+
+            <h3>What We Offer</h3>
+
+            <div class="offer-list">
+
+                <div class="offer-item">❤️ Couple Websites</div>
+                <div class="offer-item">🎂 Birthday Websites</div>
+                <div class="offer-item">🎉 Anniversary Websites</div>
+                <div class="offer-item">📖 Friendship Books</div>
+                <div class="offer-item">💼 Portfolio Websites</div>
+                <div class="offer-item">🎁 Surprise Websites</div>
+
+            </div>
+
+        </div>
+
+        <div class="demo-box glass">
+
+            <h3>Featured Demos</h3>
+
+            <div class="demo-card">
+    Couple Website Demo<br>
+    <a href="couple-demo.html">
+        <button>View Demo</button>
+    </a>
+</div>
+
+            <div class="demo-card">
+    Birthday Website Demo<br>
+    <a href="birthday-demo.html">
+        <button>View Demo</button>
+    </a>
+</div>
+
+            <div class="demo-card">
+    Friendship Book Demo<br>
+    <a href="friendship-demo.html">
+        <button>View Demo</button>
+    </a>
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2>Why Choose Us</h2>
+
+    <div class="why-grid">
+
+        <div class="why-card glass">
+            <h4>Personalized Design</h4>
+            <p>Every project is uniquely crafted.</p>
+        </div>
+
+        <div class="why-card glass">
+            <h4>Mobile Friendly</h4>
+            <p>Perfect experience on every device.</p>
+        </div>
+
+        <div class="why-card glass">
+            <h4>Premium Animations</h4>
+            <p>Smooth modern interactions.</p>
+        </div>
+
+        <div class="why-card glass">
+            <h4>Fast Delivery</h4>
+            <p>Quick turnaround without compromise.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2>Pricing</h2>
+
+    <div class="price-grid">
+
+        <div class="price-card glass">
+            <h3>Basic</h3>
+            <div class="price">₹299</div>
+
+            <ul>
+                <li>Single Page</li>
+                <li>Music Integration</li>
+                <li>Mobile Friendly</li>
+            </ul>
+        </div>
+
+        <div class="price-card glass">
+            <h3>Standard</h3>
+            <div class="price">₹599</div>
+
+            <ul>
+                <li>Multi Page</li>
+                <li>Custom Design</li>
+                <li>Animations</li>
+            </ul>
+        </div>
+
+        <div class="price-card glass">
+            <h3>Premium</h3>
+            <div class="price">₹999</div>
+
+            <ul>
+                <li>Fully Custom</li>
+                <li>Premium Effects</li>
+                <li>Priority Delivery</li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="contact">
+
+    <div class="contact-card glass">
+
+        <h2>Contact Us</h2>
+
+        <p style="color:#cfcfcf;margin-bottom:20px;">
+            Let's turn your memories into a beautiful digital experience.
+        </p>
+
+        <p>📧 memorycraft.studio.india@gmail.com</p>
+        <p>📷 @memorycraft_.studio</p>
+
+        <div class="contact-links">
+
+            <a href="https://instagram.com/memorycraft_.studio" target="_blank">
+                Instagram
+            </a>
+
+            <a href="mailto:memorycraft.studio.india@gmail.com">
+                Email
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</section>
+
+<footer>
+
+    <h3>MemoryCraft Studio</h3>
+
+    <p>Crafting Memories Into Websites</p>
+
+    <p>© 2026 MemoryCraft Studio</p>
+
+</footer>
+
+</body>
+</html>
